@@ -6,7 +6,14 @@ void main() => runApp(
       ),
     );
 
-class NinjaCard extends StatelessWidget {
+class NinjaCard extends StatefulWidget {
+  @override
+  _NinjaCardState createState() => _NinjaCardState();
+}
+
+class _NinjaCardState extends State<NinjaCard> {
+  int ninjaLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +24,17 @@ class NinjaCard extends StatelessWidget {
         backgroundColor: Colors.grey[800],
         elevation: 0,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            ninjaLevel += 1;
+          });
+        },
+        child: Icon(
+          Icons.add,
+        ),
+        backgroundColor: Colors.amber,
+      ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
         child: Column(
@@ -24,11 +42,15 @@ class NinjaCard extends StatelessWidget {
           children: [
             Center(
               child: CircleAvatar(
-                backgroundImage: AssetImage('assets/image_icons/image1.jpg'),
+                backgroundImage: AssetImage('assets/image_icons/image2.jpg'),
                 radius: 40.0,
               ),
             ),
-            SizedBox(height:10.0),
+            Divider(
+              height: 60.0,
+              color: Colors.grey[800],
+            ),
+            SizedBox(height: 10.0),
             Text(
               "Name",
               style: TextStyle(
@@ -36,9 +58,9 @@ class NinjaCard extends StatelessWidget {
                 letterSpacing: 2.0,
               ),
             ),
-            SizedBox(height:8.0),
+            SizedBox(height: 8.0),
             Text(
-             "Saicharan Sarikonda",
+              "Saicharan Sarikonda",
               style: TextStyle(
                 fontSize: 20.0,
                 color: Colors.amber,
@@ -46,7 +68,7 @@ class NinjaCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height:30.0),
+            SizedBox(height: 30.0),
             Text(
               "Current Learning Level",
               style: TextStyle(
@@ -54,9 +76,9 @@ class NinjaCard extends StatelessWidget {
                 letterSpacing: 2.0,
               ),
             ),
-            SizedBox(height:8.0),
+            SizedBox(height: 8.0),
             Text(
-             "Medium",
+              "$ninjaLevel",
               style: TextStyle(
                 fontSize: 20.0,
                 color: Colors.amber,
@@ -64,7 +86,7 @@ class NinjaCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height:30.0),
+            SizedBox(height: 30.0),
             Row(
               children: [
                 Icon(
@@ -79,8 +101,7 @@ class NinjaCard extends StatelessWidget {
                     color: Colors.amber,
                     fontSize: 13.0,
                     letterSpacing: 1.0,
-                    ),
-                    
+                  ),
                 ),
               ],
             ),
